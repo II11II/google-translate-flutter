@@ -55,7 +55,7 @@ class _TranslateInputState extends State<TranslateInput> {
   Widget build(BuildContext context) {
     _translateProvider = Provider.of<TranslateProvider>(context, listen: true);
 
-    _textEditingController.text = _translateProvider.textToTranslate;
+//    _textEditingController.text = _translateProvider.textToTranslate;
     _translatingText(_textEditingController.text);
 
     return Container(
@@ -67,12 +67,13 @@ class _TranslateInputState extends State<TranslateInput> {
           Expanded(
             child: Container(
               margin: EdgeInsets.only(left: 16.0),
-              child: TextField(
-showCursor: false,
+              child: TextFormField(
+                textAlign: TextAlign.left,
                 focusNode: widget.focusNode,
                 controller: _textEditingController,
                 maxLines: null,
-//                keyboardType: TextInputType.multiline,
+                textDirection: TextDirection.ltr,
+                keyboardType: TextInputType.multiline,
                 onChanged:_onTextChanged,
                 decoration: InputDecoration(
                   border: InputBorder.none,
