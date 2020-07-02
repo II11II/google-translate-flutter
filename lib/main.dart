@@ -18,9 +18,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Google Translate',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          primaryColor: Colors.blue[600],
+
+        theme: ThemeData.dark(
+//          primarySwatch: Colors.blue,
+////          primaryColor: Colors.blue[600],
+////          primaryColorLight: Colors.white
         ),
         home: HomePage(title: 'Google Translate'),
       ),

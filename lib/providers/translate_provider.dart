@@ -4,7 +4,7 @@ import 'package:google_translate/models/language.dart';
 class TranslateProvider with ChangeNotifier {
   bool _isTranslating = false;
   String _textToTranslate = "";
-  Language _firstLanguage = Language('fr', 'French', true, true, true);
+  Language _firstLanguage = Language('ru', 'Russian', true, true, true);
   Language _secondLanguage = Language('en', 'English', true, true, true);
 
   setIsTranslating(bool isTranslating) {

@@ -102,7 +102,7 @@ class _RecordPageState extends State<RecordPage> {
     _translateProvider = Provider.of<TranslateProvider>(context, listen: true);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+//      backgroundColor: Colors.white,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.dark,
         child: Container(

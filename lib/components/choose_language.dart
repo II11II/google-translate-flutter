@@ -63,7 +63,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
     return Container(
       height: 55.0,
       decoration: BoxDecoration(
-        color: Colors.white,
+//        color: Colors.white,
         border: Border(
           bottom: BorderSide(
             width: 0.5,
@@ -77,7 +77,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
         children: <Widget>[
           Expanded(
             child: Material(
-              color: Colors.white,
+//              color: Colors.white,
               child: InkWell(
                 onTap: () {
                   this._chooseFirstLanguage("Translate from", true);
@@ -95,7 +95,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
             ),
           ),
           Material(
-            color: Colors.white,
+//            color: Colors.white,
             child: IconButton(
               icon: Icon(
                 Icons.compare_arrows,
@@ -106,7 +106,7 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
           ),
           Expanded(
             child: Material(
-              color: Colors.white,
+//              color: Colors.white,
               child: InkWell(
                 onTap: () {
                   this._chooseSecondLanguage("Translate to", false);

@@ -26,7 +26,7 @@ class _TranslateTextState extends State<TranslateText> {
     _translateProvider = Provider.of<TranslateProvider>(context, listen: true);
 
     return Card(
-      color: Colors.white,
+//      color: Colors.white,
       margin: EdgeInsets.all(0.0),
       elevation: 2.0,
       child: Container(
@@ -52,47 +52,49 @@ class _TranslateTextState extends State<TranslateText> {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                ActionButton(
-                  icon: Icons.camera_alt,
-                  text: "Camera",
-                ),
-                ActionButton(
-                  imageIcon: AssetImage("assets/pen.png"),
-                  text: "Handwriting",
-                ),
-                ActionButton(
-                  imageIcon: AssetImage("assets/conversation.png"),
-                  text: "Conversation",
-                  onClick: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ConversationPage(),
-                      ),
-                    );
-                  },
-                ),
-                ActionButton(
-                  onClick: () async {
-                    var result = await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RecordPage(),
-                      ),
-                    );
+            Material(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+//                ActionButton(
+//                  icon: Icons.camera_alt,
+//                  text: "Camera",
+//                ),
+//                ActionButton(
+//                  imageIcon: AssetImage("assets/pen.png"),
+//                  text: "Handwriting",
+//                ),
+                  ActionButton(
+                    imageIcon: AssetImage("assets/conversation.png"),
+                    text: "Conversation",
+                    onClick: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ConversationPage(),
+                        ),
+                      );
+                    },
+                  ),
+                  ActionButton(
+                    onClick: () async {
+                      var result = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RecordPage(),
+                        ),
+                      );
 
-                    if (result != null && result != "") {
-                      _translateProvider.setTextToTranslate(result);
-                      _translateProvider.setIsTranslating(true);
-                    }
-                  },
-                  icon: Icons.keyboard_voice,
-                  text: "Voice",
-                ),
-              ],
+                      if (result != null && result != "") {
+                        _translateProvider.setTextToTranslate(result);
+                        _translateProvider.setIsTranslating(true);
+                      }
+                    },
+                    icon: Icons.keyboard_voice,
+                    text: "Voice",
+                  ),
+                ],
+              ),
             ),
           ],
         ),

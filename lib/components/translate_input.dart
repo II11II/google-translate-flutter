@@ -54,12 +54,13 @@ class _TranslateInputState extends State<TranslateInput> {
   @override
   Widget build(BuildContext context) {
     _translateProvider = Provider.of<TranslateProvider>(context, listen: true);
+
     _textEditingController.text = _translateProvider.textToTranslate;
     _translatingText(_textEditingController.text);
 
     return Container(
       height: 300.0,
-      color: Colors.white,
+//      color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -67,10 +68,11 @@ class _TranslateInputState extends State<TranslateInput> {
             child: Container(
               margin: EdgeInsets.only(left: 16.0),
               child: TextField(
+showCursor: false,
                 focusNode: widget.focusNode,
                 controller: _textEditingController,
                 maxLines: null,
-                keyboardType: TextInputType.multiline,
+//                keyboardType: TextInputType.multiline,
                 onChanged:_onTextChanged,
                 decoration: InputDecoration(
                   border: InputBorder.none,
@@ -109,7 +111,7 @@ class _TranslateInputState extends State<TranslateInput> {
               child: Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  _textTranslated,
+                  _textTranslated??"",
                   style: TextStyle(color: Colors.blue[700]),
                 ),
               ),

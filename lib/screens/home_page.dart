@@ -92,6 +92,7 @@ class _HomePageState extends State<HomePage>
           Stack(
             children: <Widget>[
               Offstage(
+
                 offstage: _translateProvider.isTranslating,
                 child: TranslateText(
                   onTextTouched: _onTextTouched,
@@ -106,17 +107,17 @@ class _HomePageState extends State<HomePage>
               ),
             ],
           ),
-          Expanded(
-            child: Stack(
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(top: 8.0),
-                  child: ListTranslate(),
-                ),
-                _displaySuggestions(),
-              ],
-            ),
-          ),
+//          Expanded(
+//            child: Stack(
+//              children: <Widget>[
+//                Container(
+//                  margin: EdgeInsets.only(top: 8.0),
+//                  child: ListTranslate(),
+//                ),
+//                _displaySuggestions(),
+//              ],
+//            ),
+//          ),
         ],
       ),
     );

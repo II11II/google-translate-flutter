@@ -207,13 +207,15 @@ class _ConversationPageState extends State<ConversationPage> {
   @override
   Widget build(BuildContext context) {
     _translateProvider = Provider.of<TranslateProvider>(context, listen: true);
-
-    if (_talkNowTextLanguage1.isEmpty || _talkNowTextLanguage2.isEmpty) {
+    if (_talkNowTextLanguage1 != null &&
+        _talkNowTextLanguage2 != null) if (_talkNowTextLanguage1
+            .isEmpty ||
+        _talkNowTextLanguage2.isEmpty) {
       _initTalkNowText();
     }
 
     return Scaffold(
-      backgroundColor: Colors.white,
+//      backgroundColor: Colors.white,
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here

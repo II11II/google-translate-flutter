@@ -36,7 +36,7 @@ class _ActionButtonState extends State<ActionButton> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+//      color: Colors.white,
       child: FlatButton(
         padding: EdgeInsets.only(
           left: 8.0,
