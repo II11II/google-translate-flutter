@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "372084437074",
+    "firebase_url": "https://translatoruz-966bc.firebaseio.com",
+    "project_id": "translatoruz-966bc",
+    "storage_bucket": "translatoruz-966bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372084437074:android:453f632be238db8a512f8b",
+        "android_client_info": {
+          "package_name": "uz.softclub.translator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "372084437074-r2fr8r0iodbh47kvag0d409n52dvrup1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAN_pAF7vtOnylxHzSXBk67_P4tvf7B5bE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "372084437074-r2fr8r0iodbh47kvag0d409n52dvrup1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

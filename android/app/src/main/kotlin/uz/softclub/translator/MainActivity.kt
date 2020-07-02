@@ -1,4 +1,4 @@
-package com.applichic.googletranslate
+package uz.softclub.translator
 
 import android.os.Bundle
 
