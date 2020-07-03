@@ -10,14 +10,14 @@ description: A google translate looking application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   flutter_sticky_header: "^0.4.0"
   translator: ^0.1.4
   speech_to_text: ^1.1.0
   provider: ^4.0.1
-
+#  firebase_admob: ^0.9.3+2
   flutter:
     sdk: flutter
 
