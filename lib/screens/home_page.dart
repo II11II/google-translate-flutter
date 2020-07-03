@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-//import 'package:google_translate/ads/ad.dart';
-//import 'package:firebase_admob/firebase_admob.dart';
-//
-//import 'package:google_translate/ads/ad_manager.dart';
+import 'package:google_translate/ads/ad.dart';
+import 'package:firebase_admob/firebase_admob.dart';
+
+import 'package:google_translate/ads/ad_manager.dart';
 import 'package:google_translate/providers/translate_provider.dart';
 import 'package:provider/provider.dart';
 import '../components/choose_language.dart';
@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage>
   TranslateProvider _translateProvider;
   FocusNode _textFocusNode = FocusNode();
   AnimationController _controller;
-//  Ad ad=Ad();
+  Ad ad=Ad();
 
   Animation _animation;
 
@@ -34,24 +34,24 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    //ad.initState();
+
     _controller = AnimationController(
       duration: const Duration(milliseconds: 150),
       vsync: this,
     )..addListener(() {
         setState(() {});
       });
-
-//    ad.createInterstitialAd()
-//      ..load()
-//      ..show();
+    ad.initState();
+    ad.createInterstitialAd()
+      ..load()
+      ..show();
   }
 
   @override
   void dispose() {
     _controller.dispose();
     _textFocusNode.dispose();
-    //ad.dispose();
+    ad.dispose();
     super.dispose();
   }
 
