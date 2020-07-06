@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_translate/ads/ad.dart';
 import 'package:google_translate/providers/translate_provider.dart';
 import 'package:google_translate/screens/conversation_page.dart';
 import 'package:google_translate/screens/record_page.dart';
@@ -20,6 +21,14 @@ class TranslateText extends StatefulWidget {
 
 class _TranslateTextState extends State<TranslateText> {
   TranslateProvider _translateProvider;
+  Ad ad;
+
+  @override
+  void initState() {
+    ad = Ad();
+    ad.initState();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,18 +65,11 @@ class _TranslateTextState extends State<TranslateText> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-//                ActionButton(
-//                  icon: Icons.camera_alt,
-//                  text: "Camera",
-//                ),
-//                ActionButton(
-//                  imageIcon: AssetImage("assets/pen.png"),
-//                  text: "Handwriting",
-//                ),
                   ActionButton(
                     imageIcon: AssetImage("assets/conversation.png"),
                     text: "Conversation",
                     onClick: () {
+                      ad.initBanner();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -78,6 +80,8 @@ class _TranslateTextState extends State<TranslateText> {
                   ),
                   ActionButton(
                     onClick: () async {
+                      ad.initInterstitialAd();
+
                       var result = await Navigator.push(
                         context,
                         MaterialPageRoute(

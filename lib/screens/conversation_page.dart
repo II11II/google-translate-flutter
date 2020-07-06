@@ -170,17 +170,23 @@ class _ConversationPageState extends State<ConversationPage> {
 
   String _displaysTextLanguage1() {
     if (_personTalkingIndex == 0) {
-      if (_textToTranslate.isEmpty) {
-        return _talkNowTextLanguage1;
-      } else {
-        return _textToTranslate;
-      }
-    } else if (_personTalkingIndex == 1) {
-      if (_textTranslated.isEmpty) {
+      if (_textTranslated != null) {
+        if (_textToTranslate.isEmpty) {
+          return _talkNowTextLanguage1;
+        } else {
+          return _textToTranslate;
+        }
+      } else
         return "";
-      } else {
-        return _textTranslated;
-      }
+    } else if (_personTalkingIndex == 1) {
+      if (_textTranslated != null) {
+        if (_textTranslated.isEmpty) {
+          return "";
+        } else {
+          return _textTranslated;
+        }
+      } else
+        return "";
     } else {
       return "";
     }
@@ -188,17 +194,21 @@ class _ConversationPageState extends State<ConversationPage> {
 
   String _displaysTextLanguage2() {
     if (_personTalkingIndex == 0) {
-      if (_textTranslated.isEmpty) {
+      if (_textTranslated != null) {
+        if (_textTranslated.isEmpty) {
+          return "";
+        } else {
+          return _textTranslated;
+        }
+      } else
         return "";
-      } else {
-        return _textTranslated;
-      }
     } else if (_personTalkingIndex == 1) {
+      if (_textTranslated != null) {
       if (_textToTranslate.isEmpty) {
         return _talkNowTextLanguage2;
       } else {
         return _textToTranslate;
-      }
+      }} else return "";
     } else {
       return "";
     }

@@ -9,7 +9,6 @@ import 'package:google_translate/ads/ad_manager.dart';
 class Ad {
 
   static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-
     nonPersonalizedAds: true,
     keywords: <String>[],
   );
@@ -36,17 +35,19 @@ class Ad {
           print("IntersttialAd $event");
         });
   }
-
   void initState() {
     FirebaseAdMob.instance.initialize(appId: AdManager.appId);
-    _bannerAd = createBannerAd()
+  }
+  void initInterstitialAd(){
+    _interstitialAd = createInterstitialAd()
       ..load()
       ..show();
-//    _interstitialAd = createInterstitialAd()
-//      ..load()
-//      ..show();
-
   }
+void initBanner(){
+  _bannerAd = createBannerAd()
+    ..load()
+    ..show();
+}
 
 
   void dispose() {

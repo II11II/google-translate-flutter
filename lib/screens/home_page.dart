@@ -26,15 +26,14 @@ class _HomePageState extends State<HomePage>
   TranslateProvider _translateProvider;
   FocusNode _textFocusNode = FocusNode();
   AnimationController _controller;
-  Ad ad=Ad();
+  Ad ad;
 
   Animation _animation;
-
 
   @override
   void initState() {
     super.initState();
-
+    ad = Ad();
     _controller = AnimationController(
       duration: const Duration(milliseconds: 150),
       vsync: this,
@@ -42,16 +41,14 @@ class _HomePageState extends State<HomePage>
         setState(() {});
       });
     ad.initState();
-    ad.createInterstitialAd()
-      ..load()
-      ..show();
+    ad.initBanner();
   }
 
   @override
   void dispose() {
     _controller.dispose();
     _textFocusNode.dispose();
-    ad.dispose();
+    ad?.dispose();
     super.dispose();
   }
 
@@ -105,7 +102,6 @@ class _HomePageState extends State<HomePage>
           Stack(
             children: <Widget>[
               Offstage(
-
                 offstage: _translateProvider.isTranslating,
                 child: TranslateText(
                   onTextTouched: _onTextTouched,
@@ -135,5 +131,4 @@ class _HomePageState extends State<HomePage>
       ),
     );
   }
-
 }
