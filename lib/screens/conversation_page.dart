@@ -2,14 +2,15 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_translate/components/record_button.dart';
-import 'package:translator/translator.dart';
+import 'package:google_translate/ads/ad.dart';
 import 'package:google_translate/components/language_button.dart';
+import 'package:google_translate/components/record_button.dart';
 import 'package:google_translate/providers/translate_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:speech_to_text/speech_recognition_error.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:translator/translator.dart';
 
 class ConversationPage extends StatefulWidget {
   @override
@@ -27,11 +28,29 @@ class _ConversationPageState extends State<ConversationPage> {
   GoogleTranslator _translator = new GoogleTranslator();
   int _personTalkingIndex = 0;
 
+  Ad ad;
+
+
+
   @override
   void initState() {
     super.initState();
+    ad = Ad();
     _initSpeechToText();
+    ad.initState();
+    ad.initInterstitialAd();
   }
+
+  @override
+  void dispose() {
+    _personTalkingIndex = -1;
+    _timer.cancel();
+    _speech.cancel();
+    ad?.dispose();
+    super.dispose();
+  }
+
+
 
   @override
   void deactivate() {
@@ -42,14 +61,7 @@ class _ConversationPageState extends State<ConversationPage> {
     super.deactivate();
   }
 
-  @override
-  void dispose() {
-    _personTalkingIndex = -1;
-    _timer.cancel();
-    _speech.cancel();
 
-    super.dispose();
-  }
 
   _startTimer() async {
     if (_timer != null) {
@@ -204,11 +216,13 @@ class _ConversationPageState extends State<ConversationPage> {
         return "";
     } else if (_personTalkingIndex == 1) {
       if (_textTranslated != null) {
-      if (_textToTranslate.isEmpty) {
-        return _talkNowTextLanguage2;
-      } else {
-        return _textToTranslate;
-      }} else return "";
+        if (_textToTranslate.isEmpty) {
+          return _talkNowTextLanguage2;
+        } else {
+          return _textToTranslate;
+        }
+      } else
+        return "";
     } else {
       return "";
     }
@@ -229,6 +243,13 @@ class _ConversationPageState extends State<ConversationPage> {
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
+        ),
+        leading: IconButton(
+          onPressed: () { ad.initInterstitialAd();
+            Navigator.pop(context);
+
+          },
+          icon: Icon(Icons.arrow_back),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,

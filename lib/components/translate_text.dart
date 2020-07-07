@@ -1,3 +1,4 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:google_translate/ads/ad.dart';
 import 'package:google_translate/providers/translate_provider.dart';
@@ -23,6 +24,11 @@ class _TranslateTextState extends State<TranslateText> {
   TranslateProvider _translateProvider;
   Ad ad;
 
+  @override
+  void dispose() {
+   ad?.dispose();
+    super.dispose();
+  }
   @override
   void initState() {
     ad = Ad();
@@ -69,7 +75,7 @@ class _TranslateTextState extends State<TranslateText> {
                     imageIcon: AssetImage("assets/conversation.png"),
                     text: "Conversation",
                     onClick: () {
-                      ad.initBanner();
+
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -80,7 +86,7 @@ class _TranslateTextState extends State<TranslateText> {
                   ),
                   ActionButton(
                     onClick: () async {
-                      ad.initInterstitialAd();
+
 
                       var result = await Navigator.push(
                         context,

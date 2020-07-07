@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_translate/ads/ad.dart';
 import 'package:google_translate/components/record_button.dart';
 import 'package:google_translate/providers/translate_provider.dart';
 import 'package:provider/provider.dart';
@@ -19,12 +20,25 @@ class _RecordPageState extends State<RecordPage> {
   var _speech = SpeechToText();
   Timer _timer;
   String _speechText = "";
+  Ad ad;
 
   @override
-  void initState() {
-    super.initState();
-    _initSpeechToText();
+  void dispose() {
+    ad?.dispose();
+    _timer.cancel();
+    _speech.cancel();
+    _speech.stop();
+    super.dispose();
   }
+  @override
+  void initState() {
+    ad = Ad();
+    ad.initState();
+
+    _initSpeechToText();
+    super.initState();
+  }
+
 
   @override
   void deactivate() {
@@ -35,14 +49,7 @@ class _RecordPageState extends State<RecordPage> {
     super.deactivate();
   }
 
-  @override
-  void dispose() {
-    _timer.cancel();
-    _speech.cancel();
-    _speech.stop();
 
-    super.dispose();
-  }
 
   _startTimer() {
     if (_timer != null) {
@@ -138,6 +145,7 @@ class _RecordPageState extends State<RecordPage> {
                           color: Colors.black54,
                         ),
                         onPressed: () {
+                          ad.initInterstitialAd();
                           Navigator.pop(context, _speechText);
                         },
                       ),
