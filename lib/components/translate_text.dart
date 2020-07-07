@@ -22,17 +22,17 @@ class TranslateText extends StatefulWidget {
 
 class _TranslateTextState extends State<TranslateText> {
   TranslateProvider _translateProvider;
-  Ad ad;
+
 
   @override
   void dispose() {
-   ad?.dispose();
+   Ad?.dispose();
     super.dispose();
   }
   @override
   void initState() {
-    ad = Ad();
-    ad.initState();
+
+    Ad.initState();
     super.initState();
   }
 
@@ -74,18 +74,19 @@ class _TranslateTextState extends State<TranslateText> {
                   ActionButton(
                     imageIcon: AssetImage("assets/conversation.png"),
                     text: "Conversation",
-                    onClick: () {
-
+                    onClick: () async{
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => ConversationPage(),
                         ),
                       );
+//                      Ad.initBanner();
                     },
                   ),
                   ActionButton(
                     onClick: () async {
+
 
 
                       var result = await Navigator.push(
@@ -94,6 +95,7 @@ class _TranslateTextState extends State<TranslateText> {
                           builder: (context) => RecordPage(),
                         ),
                       );
+//                     Ad.initBanner();
 
                       if (result != null && result != "") {
                         _translateProvider.setTextToTranslate(result);

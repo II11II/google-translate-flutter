@@ -7,14 +7,14 @@ class Ad {
     keywords: <String>['any'],
   );
 
-  BannerAd bannerAd;
-  InterstitialAd interstitialAd;
+ static BannerAd bannerAd;
+ static InterstitialAd interstitialAd;
 
-  BannerAd createBannerAd() {
+ static BannerAd createBannerAd() {
     return BannerAd(
 //        adUnitId: AdManager.bannerAdUnitId,
         adUnitId: BannerAd.testAdUnitId,
-        size: AdSize.smartBanner,
+        size: AdSize.banner,
         targetingInfo: targetingInfo,
         listener: (MobileAdEvent event) {
 //          if (event == MobileAdEvent.failedToLoad) {
@@ -24,8 +24,11 @@ class Ad {
 //          }
         });
   }
-
-  InterstitialAd createInterstitialAd() {
+  static void hideBannerAd() async {
+    await bannerAd.dispose();
+    bannerAd = null;
+  }
+ static InterstitialAd createInterstitialAd() {
     return InterstitialAd(
 //        adUnitId: AdManager.interstitialAdUnitId,
         adUnitId: InterstitialAd.testAdUnitId,
@@ -39,26 +42,29 @@ class Ad {
         });
   }
 
-  void initState() {
+ static void initState() {
 //    FirebaseAdMob.instance.initialize(appId: AdManager.appId);
     FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
 
   }
 
-  void initInterstitialAd() {
+ static void initInterstitialAd() {
     interstitialAd = createInterstitialAd()
       ..load()
       ..show();
   }
 
-  void initBanner() {
+ static void initBanner() {
     bannerAd = createBannerAd()
       ..load()
       ..show();
   }
 
-  void dispose() {
-    bannerAd?.dispose();
-    interstitialAd?.dispose();
-  }
+  static dispose() async{
+ await   bannerAd?.dispose();
+ bannerAd=null;
+   await interstitialAd?.dispose();
+ interstitialAd=null;
+
+   }
 }

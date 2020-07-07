@@ -20,11 +20,9 @@ class _RecordPageState extends State<RecordPage> {
   var _speech = SpeechToText();
   Timer _timer;
   String _speechText = "";
-  Ad ad;
 
   @override
-  void dispose() {
-    ad?.dispose();
+  void dispose() {Ad.dispose();
     _timer.cancel();
     _speech.cancel();
     _speech.stop();
@@ -32,8 +30,8 @@ class _RecordPageState extends State<RecordPage> {
   }
   @override
   void initState() {
-    ad = Ad();
-    ad.initState();
+
+    Ad.initState();
 
     _initSpeechToText();
     super.initState();
@@ -145,7 +143,7 @@ class _RecordPageState extends State<RecordPage> {
                           color: Colors.black54,
                         ),
                         onPressed: () {
-                          ad.initInterstitialAd();
+                          Ad.initInterstitialAd();
                           Navigator.pop(context, _speechText);
                         },
                       ),

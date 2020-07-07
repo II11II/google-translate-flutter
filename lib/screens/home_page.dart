@@ -26,29 +26,29 @@ class _HomePageState extends State<HomePage>
   TranslateProvider _translateProvider;
   FocusNode _textFocusNode = FocusNode();
   AnimationController _controller;
-  Ad ad;
+
 
   Animation _animation;
 
   @override
   void initState() {
     super.initState();
-    ad = Ad();
+
     _controller = AnimationController(
       duration: const Duration(milliseconds: 150),
       vsync: this,
     )..addListener(() {
         setState(() {});
       });
-    ad.initState();
-    ad.initBanner();
+    Ad.initState();
+
   }
 
   @override
   void dispose() {
     _controller.dispose();
     _textFocusNode.dispose();
-    ad?.dispose();
+    Ad.dispose();
     super.dispose();
   }
 
@@ -84,6 +84,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    Ad.initBanner();
     _translateProvider = Provider.of<TranslateProvider>(context, listen: true);
 
     return Scaffold(

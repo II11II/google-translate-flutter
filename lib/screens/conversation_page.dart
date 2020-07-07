@@ -28,17 +28,18 @@ class _ConversationPageState extends State<ConversationPage> {
   GoogleTranslator _translator = new GoogleTranslator();
   int _personTalkingIndex = 0;
 
-  Ad ad;
+
 
 
 
   @override
   void initState() {
     super.initState();
-    ad = Ad();
+    Ad.dispose();
     _initSpeechToText();
-    ad.initState();
-    ad.initInterstitialAd();
+    Ad.initState();
+    Ad.initInterstitialAd();
+
   }
 
   @override
@@ -46,7 +47,7 @@ class _ConversationPageState extends State<ConversationPage> {
     _personTalkingIndex = -1;
     _timer.cancel();
     _speech.cancel();
-    ad?.dispose();
+    Ad.dispose();
     super.dispose();
   }
 
@@ -245,7 +246,7 @@ class _ConversationPageState extends State<ConversationPage> {
           color: Colors.black, //change your color here
         ),
         leading: IconButton(
-          onPressed: () { ad.initInterstitialAd();
+          onPressed: () { Ad.initInterstitialAd();
             Navigator.pop(context);
 
           },
