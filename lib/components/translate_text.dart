@@ -86,9 +86,6 @@ class _TranslateTextState extends State<TranslateText> {
                   ),
                   ActionButton(
                     onClick: () async {
-
-
-
                       var result = await Navigator.push(
                         context,
                         MaterialPageRoute(

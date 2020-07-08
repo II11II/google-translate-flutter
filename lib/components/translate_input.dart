@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_translate/providers/translate_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:translator/translator.dart';
@@ -74,7 +75,7 @@ class _TranslateInputState extends State<TranslateInput> {
                 maxLines: null,
                 textDirection: TextDirection.ltr,
                 keyboardType: TextInputType.multiline,
-                onChanged:_onTextChanged,
+                onChanged: _onTextChanged,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   suffixIcon: Container(
@@ -111,9 +112,21 @@ class _TranslateInputState extends State<TranslateInput> {
               margin: EdgeInsets.only(left: 16.0),
               child: Align(
                 alignment: Alignment.topLeft,
-                child: Text(
-                  _textTranslated??"",
-                  style: TextStyle(color: Colors.blue[700]),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    SelectableText(
+                      _textTranslated ?? "",
+                      style: TextStyle(color: Colors.blue[700]),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.content_copy),
+                      onPressed: () {
+                        Clipboard.setData(ClipboardData(text: _textTranslated));
+                          Scaffold.of(context).showSnackBar(SnackBar(content: Text("Successfully Copied"),elevation: 100,behavior: SnackBarBehavior.floating,),);
+                      },
+                    )
+                  ],
                 ),
               ),
             ),

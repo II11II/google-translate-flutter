@@ -35,7 +35,7 @@ class _ConversationPageState extends State<ConversationPage> {
   @override
   void initState() {
     super.initState();
-    Ad.dispose();
+
     _initSpeechToText();
     Ad.initState();
     Ad.initInterstitialAd();
@@ -190,7 +190,7 @@ class _ConversationPageState extends State<ConversationPage> {
           return _textToTranslate;
         }
       } else
-        return "";
+        return _talkNowTextLanguage1;
     } else if (_personTalkingIndex == 1) {
       if (_textTranslated != null) {
         if (_textTranslated.isEmpty) {
@@ -199,7 +199,7 @@ class _ConversationPageState extends State<ConversationPage> {
           return _textTranslated;
         }
       } else
-        return "";
+        return _textTranslated;
     } else {
       return "";
     }
