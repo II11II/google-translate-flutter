@@ -30,10 +30,18 @@
             {
               "client_id": "372084437074-r2fr8r0iodbh47kvag0d409n52dvrup1.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "372084437074-otlp565lngka9c81k18djpra4lhn1j72.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "uz.softclub.translator"
+              }
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-3823537053576178~4633880080"
     }
   ],
   "configuration_version": "1"

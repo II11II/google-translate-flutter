@@ -1,7 +1,6 @@
 import 'dart:io';
 
 class AdManager {
-
   static String get appId {
     if (Platform.isAndroid) {
       return "ca-app-pub-3823537053576178~4633880080";
