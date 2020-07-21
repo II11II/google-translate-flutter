@@ -124,7 +124,7 @@ Widget build(BuildContext context) {
               child: Text(
                 _speechText != '' ? _speechText : 'Talk now',
                 style: TextStyle(
-                  color: Colors.black54,
+                  color: Colors.white,
                   fontSize: 22,
                   fontWeight: FontWeight.w300,
                 ),
